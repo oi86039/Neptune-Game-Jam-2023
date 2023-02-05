@@ -6,7 +6,6 @@ using UnityEngine.Rendering.Universal;
 public class fadeFlash : MonoBehaviour
 {
     Light2D myLight;
-    float timer = 0;
     public float startFade = 1;
 
     void Start()
