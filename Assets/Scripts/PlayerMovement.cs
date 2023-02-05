@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0) && canFlash)
             {
-                Instantiate(prefab, model.transform.rotation.y == 0 ? transform.position + Vector3.right * 5 : transform.position + Vector3.right * -5, Quaternion.identity);
+                Instantiate(prefab, model.transform.rotation.y == -90 ? transform.position + Vector3.right * 5 : transform.position + Vector3.right * -5, Quaternion.identity);
                 canFlash = false;
                 Debug.Log("FLASHING");
             }
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
 
-        anim.SetBool("onGround", controller.collisions.below);
+        anim.SetBool("OnGround", controller.collisions.below);
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
@@ -135,12 +135,12 @@ public class PlayerMovement : MonoBehaviour
             velocity.x = Mathf.Clamp(velocity.x + input.x * moveSpeed * Time.deltaTime, -maxSpeed, maxSpeed);
             if (velocity.x > 0f)
             {
-                model.transform.eulerAngles = Vector3.zero;
+                model.transform.eulerAngles = new Vector3(0f, -90f, 0f);
                 facingF = true;
             }
             else if (velocity.x < 0f)
             {
-                model.transform.eulerAngles = new Vector3(0f, 180f, 0f);
+                model.transform.eulerAngles = new Vector3(0f, 90f, 0f);
                 facingF = false;
             }
         }
@@ -150,8 +150,8 @@ public class PlayerMovement : MonoBehaviour
         }
         velocity.y = Mathf.Clamp(velocity.y + (gravity * Time.deltaTime), -gravMax, jumpMax);
         velocity = controller.Move(velocity);
-        anim.setFloat("horizontalSpeed", velocity.x);
-        anim.setFloat("verticalSpeed", velocity.y);
+        anim.SetFloat("horizontalVelocity", Mathf.Abs(velocity.x));
+        anim.SetFloat("verticalVelocity", Mathf.Abs(velocity.y));
 
     }
 }
