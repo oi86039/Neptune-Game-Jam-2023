@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         if(canFlash == false)
         {
             flashCool -= Time.deltaTime;
-            Debug.Log("FALSE");
+            //Debug.Log("FALSE");
         }
         if(flashCool < 0)
         {
@@ -58,7 +58,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0) && canFlash)
             {
-                Instantiate(prefab, model.transform.rotation.y == -90 ? transform.position + Vector3.right * 5 : transform.position + Vector3.right * -5, Quaternion.identity);
+                Instantiate(prefab, model.transform.rotation.y == -0.7071068f ? transform.position + Vector3.right * 5 : transform.position + Vector3.right * -5, Quaternion.identity);
+                Debug.Log(model.transform.rotation.y == -0.7071068f);
+                Debug.Log(model.transform.rotation.y);
                 canFlash = false;
                 Debug.Log("FLASHING");
             }
