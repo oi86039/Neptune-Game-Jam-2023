@@ -21,7 +21,7 @@ public class TendrilAI : MonoBehaviour
     Vector3 target;
     Vector3 home;
     public float speed = 2f;
-    int oxygen;
+    public int oxygen;
     int targetO;
     public int damage = 10;
     PlayerMovement damagingC;

@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public float gravMax = 10;
     public float jumpMax = 10;
     public float sprintModifier = 2;
-    float jumpForce; 
+    float jumpForce;
+    public int oxygen = 100;
     float gravity;
     bool crouching = false;
     bool sprinting = false;
@@ -155,5 +156,14 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("horizontalVelocity", Mathf.Abs(velocity.x));
         anim.SetFloat("verticalVelocity", Mathf.Abs(velocity.y));
 
+
+
     }
+
+    public int Damage(float harm)
+    {
+        oxygen -= (Mathf.FloorToInt(harm) > 1 ? Mathf.FloorToInt(harm) : 1);
+        return oxygen;
+    }
+
 }

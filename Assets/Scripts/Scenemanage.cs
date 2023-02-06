@@ -11,8 +11,7 @@ public class Scenemanage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentScene = SceneManager.GetActiveScene();
-        Debug.Log(currentScene.name);
+        
     }
 
     // Update is called once per frame
@@ -26,17 +25,17 @@ public class Scenemanage : MonoBehaviour
     }
 
     public void PlayGame() {
-        SceneManager.LoadScene(1); //Mission Briefing
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1); //Mission Briefing
     }
 
     public void ReadyToPlay() {
-        SceneManager.LoadScene(3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
     }
     public void Loading() {
-        SceneManager.LoadScene(2);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
     public void QuitToMenu() {
-        SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
     public void QuitToDesktop() {
         Application.Quit();
